@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class NotebooksWithSSDPage {
 
+    public void putItemToComparison(int itemNumber) {
+        addItemsToComparison(itemNumber);
+    }
+
     private void addItemsToComparison(int itemNumber) {
         ElementsCollection itemBoards = $$("div.g-i-tile-i-box-desc");
         SelenideElement itemBoard = itemBoards.get(itemNumber);
@@ -16,10 +20,6 @@ public class NotebooksWithSSDPage {
 
         itemBoard.$("span.g-compare").shouldBe(Condition.visible).click();
         sleep(800);
-    }
-
-    public void putItemToComparison(int itemNumber) {
-        addItemsToComparison(itemNumber);
     }
 
     public void clickComparisonBtn() {

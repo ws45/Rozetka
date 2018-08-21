@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class MainPage {
 
-    public void getLeftBlock() {
+    public void clickLeftBlock() {
         ElementsCollection menuCategories = $$("a.f-menu-l-i-link");
         String mainMenuCategory = "Ноутбуки и компьютеры";
         for (SelenideElement menuCategory : menuCategories) {
@@ -24,10 +24,10 @@ public class MainPage {
     }
 
     public void openNotebooksCategory() {
-        ElementsCollection categoryMenuItems = $$("a.f-menu-sub-title-link");
-        String categoryMenuItem = "Ноутбуки";
-        for (SelenideElement menuCategory : categoryMenuItems) {
-            if (menuCategory.getText().contains(categoryMenuItem)) {
+        //ElementsCollection categoryMenuItems = ;
+        //String categoryMenuItem = ;
+        for (SelenideElement menuCategory : $$("a.f-menu-sub-title-link")) {
+            if (menuCategory.getText().contains("Ноутбуки")) {
                 menuCategory.click();
                 break;
             }

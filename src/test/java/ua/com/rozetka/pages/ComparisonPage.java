@@ -18,11 +18,6 @@ public class ComparisonPage {
         for (SelenideElement row : rows) {
             comparisonItems = row.$$("div.comparison-t-cell");
 
-            int counter = 0;
-            for (SelenideElement comparisonItem : comparisonItems) {
-                counter++;
-            }
-
             if (!comparisonItems.get(0).getText().equals(comparisonItems.get(1).getText())) {
                 counterDifferent++;
             }
@@ -30,12 +25,11 @@ public class ComparisonPage {
         return counterDifferent;
     }
 
-    public int getDifferentElementsCount() {
+    public int computeDifferentElementsCount() {
         return countDifferentElementsManually();
     }
 
     public void clickOnlyDifferencesBtn() {
-        SelenideElement differenceOnly = $(By.xpath("//*[@id=\"compare-menu\"]/ul/li[2]/a"));
-        differenceOnly.click();
+        $(By.xpath("//*[@id=\"compare-menu\"]/ul/li[2]/a")).click();
     }
 }
