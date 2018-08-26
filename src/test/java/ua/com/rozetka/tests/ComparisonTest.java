@@ -65,6 +65,7 @@ public class ComparisonTest {
         int actualDifferentElementsCount = comparisonPage.computeDifferentElementsCount();
 
         //then
-        assertEquals(expectedDifferentElementsCount, actualDifferentElementsCount);
+        assertEquals("Количество различий между товарами, при использовании фильтра," +
+                " не соответствует фактическому.", expectedDifferentElementsCount, actualDifferentElementsCount);
     }
 }
