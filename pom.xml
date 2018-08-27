@@ -8,6 +8,10 @@
     <artifactId>selenium-framework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.source.encoding>UTF-8</project.build.source.encoding>
+    </properties>
+
     <dependencies>
 
         <dependency>
