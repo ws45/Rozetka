@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import static com.codeborne.selenide.Selenide.open;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ComparisonTest {
 
@@ -22,8 +22,6 @@ public class ComparisonTest {
     @BeforeClass
 
     public static void setUp() throws IOException {
-
-        //given
         InputStream file = new FileInputStream("src/test/java/ua/com/rozetka/config/config.properties");
         config.load(file);
 
@@ -41,27 +39,26 @@ public class ComparisonTest {
 
     @Test
     public void differentElementsCount() {
-
-        //when
-        mainPage.clickLeftBlock();
-        mainPage.openNotebooksCategory();
-
+        //given
         NotebooksPage notebooksPage = new NotebooksPage();
-        notebooksPage.openNotebooksWithSSD();
 
         NotebooksWithSSDPage notebooksWithSSDPage = new NotebooksWithSSDPage();
         notebooksWithSSDPage.putItemToComparison(0);
         notebooksWithSSDPage.putItemToComparison(1);
 
-        notebooksWithSSDPage.clickComparisonBtn();
-
-        new PreComparisonPage().clickCompareGoodsBtn();
+        PreComparisonPage preComparisonPage = new PreComparisonPage();
 
         ComparisonPage comparisonPage = new ComparisonPage();
         int expectedDifferentElementsCount = comparisonPage.computeDifferentElementsCount();
 
-        comparisonPage.clickOnlyDifferencesBtn();
+        //when
+        mainPage.clickLeftBlock();
+        mainPage.openNotebooksCategory();
+        notebooksPage.openNotebooksWithSSD();
+        notebooksWithSSDPage.clickComparisonBtn();
+        preComparisonPage.clickCompareGoodsBtn();
 
+        comparisonPage.clickOnlyDifferencesBtn();
         int actualDifferentElementsCount = comparisonPage.computeDifferentElementsCount();
 
         //then
